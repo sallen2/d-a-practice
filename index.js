@@ -24,4 +24,23 @@ function validAnagram(str1, str2) {
 }
 
 const result = validAnagram('asgh', 'ghas');
-console.log(result);
+console.log(result) //true
+
+// two pointers
+function countUniqueValues(arr) {
+    let j = 0;
+    let k = 1;
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[j] === arr[k]){
+            k++
+        }else{
+            j++
+            arr[j] = arr[k]
+            k++
+        }
+    }
+    return `${j} unique values`
+}
+
+const uniqueVals = countUniqueValues([1, 1, 1, 2, 3, 3, 4, 5,7,8,9,12,13])
+console.log(uniqueVals) //10 unique values
