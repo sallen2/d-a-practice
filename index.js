@@ -107,25 +107,67 @@
 // console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1))
 // console.log(averagePair([], 4))
 
-function isSubsequence(str1, str2) {
-    let str1Index = 0
-    let str2Index = 0
-    let sameCharCount = 0
+// function isSubsequence(str1, str2) {
+//     let str1Index = 0
+//     let str2Index = 0
+//     let sameCharCount = 0
 
-    while (str2Index < str2.length) {
-        if (str1[str1Index] === str2[str2Index]) {
-            str1Index++
-            str2Index++
-            sameCharCount++
-            if (sameCharCount === str1.length) return true
-        } else if (str1[str1Index] !== str2[str2Index]) {
-            str2Index++
+//     while (str2Index < str2.length) {
+//         if (str1[str1Index] === str2[str2Index]) {
+//             str1Index++
+//             str2Index++
+//             sameCharCount++
+//             if (sameCharCount === str1.length) return true
+//         } else if (str1[str1Index] !== str2[str2Index]) {
+//             str2Index++
+//         }
+//     }
+//     return false
+// }
+
+// console.log(isSubsequence('hello', 'hello world'))
+// console.log(isSubsequence('sing', 'sting'))
+// console.log(isSubsequence('abc', 'abracadabra'))
+// console.log(isSubsequence('abc', 'acb'))
+
+// function maxSubarraySum(arr, subLength) {
+//     let temp = -Infinity
+//     let value = 0
+//     if (arr.length < subLength) return null
+//     for (let i = 0; i < subLength; i++) {
+//         value += arr[i]
+//     }
+//     temp = value
+//     for (let i = subLength; i < arr.length; i++) {
+//         value = value - arr[i - subLength] + arr[i]
+//         if (temp < value) {
+//             temp = value
+//         }
+//     }
+//     return temp
+// }
+
+// //   call function and log to console
+// console.log(maxSubarraySum([100, 200, 300, 400], 2))
+// console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4))
+// console.log(maxSubarraySum([-3, 4, 0, -2, 6, -1], 2))
+// console.log(maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2))
+// console.log(maxSubarraySum([2, 3], 3))
+
+function minSubArrayLen(arr, value) {
+    let length = 0
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[i] >= value){
+            length++
+            return length
         }
     }
-    return false
+    // return length
+    // check if index is greater than or equal to value 
+    // if index is greater than or equal to value add 1 to length variable
+    // if not keep stepping through array
+    // add one to length 
+    // if sum greater than or equal to value check if length less than temp length
 }
 
-console.log(isSubsequence('hello', 'hello world'))
-console.log(isSubsequence('sing', 'sting'))
-console.log(isSubsequence('abc', 'abracadabra'))
-console.log(isSubsequence('abc', 'acb'))
+console.log(minSubArrayLen([3],1))
