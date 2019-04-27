@@ -156,10 +156,17 @@
 
 function minSubArrayLen(arr, value) {
     let length = 0
+    let sum = 0
+    let temp = 0
     for (let i = 0; i < arr.length; i++) {
-        if(arr[i] >= value){
+        sum += arr[i]
+        length++
+        if(sum >= value && length <= temp){
             length++
             return length
+        }else{
+            
+
         }
     }
     // return length
