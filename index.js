@@ -161,11 +161,11 @@ function minSubArrayLen(arr, value) {
     for (let i = 0; i < arr.length; i++) {
         sum += arr[i]
         length++
-        if(sum >= value && length <= temp){
+        if (sum >= value && length <= temp) {
             length++
             return length
-        }else{
-            
+        } else {
+
 
         }
     }
@@ -177,4 +177,161 @@ function minSubArrayLen(arr, value) {
     // if sum greater than or equal to value check if length less than temp length
 }
 
-console.log(minSubArrayLen([3],1))
+// console.log(minSubArrayLen([3,2,4,5,2,1], 5))
+
+// function capitalizeFirst(arr) {
+//     let array = []
+//     function capFirst(arr) {
+//         if(arr.length === 0) return 
+//         const word = arr[0].split('')
+//         word[0] = word[0].toUpperCase()
+//         array.push(word.join(''))
+//         return capFirst(arr.slice(1))
+//     }
+//     capFirst(arr)
+//     return array
+
+// }
+
+// console.log(capitalizeFirst(['car','taco','banana']))
+
+// function capitalizedWords (arr) {
+//     let array = []
+//     function capFirst(arr) {
+//         if(arr.length === 0) return 
+//         const word = arr[0].toUpperCase()
+//         array.push(word)
+//         return capFirst(arr.slice(1))
+//     }
+//     capFirst(arr)
+//     return array
+//   }
+
+// let words = ['i', 'am', 'learning', 'recursion'];
+// console.log(capitalizedWords(words)); // ['I', 'AM', 'LEARNING', 'RECURSION']
+
+// function nestedEvenSum(obj, sum=0) {
+//     for(let key in obj){
+//         if(typeof obj[key] === 'object'){
+//             sum += nestedEvenSum(obj[key])
+//         }else if(typeof obj[key] === 'number' && obj[key] % 2 === 0){
+//             sum += obj[key]
+//         }
+//     }
+//     return sum
+// }
+
+// var obj1 = {
+//     outer: 2,
+//     obj: {
+//         inner: 2,
+//         otherObj: {
+//             superInner: 2,
+//             notANumber: true,
+//             alsoNotANumber: "yup"
+//         }
+//     }
+// }
+
+// var obj2 = {
+//     a: 2,
+//     b: { b: 2, bb: { b: 3, bb: { b: 2 } } },
+//     c: { c: { c: 2 }, cc: 'ball', ccc: 5 },
+//     d: 1,
+//     e: { e: { e: 2 }, ee: 'car' }
+// };
+
+// console.log(nestedEvenSum(obj1)); // 6
+// console.log(nestedEvenSum(obj2)); // 10
+
+// function stringifyNumbers(obj){
+//     let newObj = {}
+//     for(let key in obj){
+//         if(typeof obj[key] === 'object' && !Array.isArray(obj[key])){
+//             newObj[key] = stringifyNumbers(obj[key])
+//         }else if(typeof obj[key] === 'number'){
+//             newObj[key] = obj[key].toString()
+//         }else{
+//             newObj[key] = obj[key] 
+//         }
+//     }
+//     return newObj
+// }
+
+// let obj = {
+//     num: 1,
+//     test: [],
+//     data: {
+//         val: 4,
+//         info: {
+//             isRight: true,
+//             random: [1,2,3]
+//         }
+//     }
+// }
+
+// console.log(stringifyNumbers(obj))
+
+// function collectStrings(obj) {
+//     let arr = []
+//     function stringCol(obj) {
+//         for (let key in obj) {
+//             if (typeof obj[key] === 'object') {
+//                 stringCol(obj[key])
+//             } else if (typeof obj[key] === 'string') {
+//                 arr.push(obj[key])
+//             }
+//         }
+//         return arr
+//     }
+//     return stringCol(obj)
+// }
+
+// const obj = {
+//     stuff: "foo",
+//     data: {
+//         val: {
+//             thing: {
+//                 info: "bar",
+//                 moreInfo: {
+//                     evenMoreInfo: {
+//                         weMadeIt: "baz"
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// console.log(collectStrings(obj)) // ["foo", "bar", "baz"])
+
+
+// converts seconds to years, days, hours, minutes, and seconds
+function formatDuration(seconds) {
+    if (seconds === 0) return 'now'
+    let arr = [
+        years = `${Math.floor(seconds / 31536000)} year`,
+        days = `${Math.floor((seconds / 86400) - ((Math.floor(seconds / 31536000)) * 365))} day`,
+        hours = `${Math.floor(seconds / 3600 - ((Math.floor(seconds / 86400)) * 24))} hour`,
+        minutes = `${Math.floor(seconds / 60 % 60)} minute`,
+        sec = `${seconds % 60} second`]
+    const hFriendly = arr.filter(time => {
+        let array = time.split(' ')
+        if (parseInt(array[0]) !== 0) {
+            return time
+        }
+    }).map((time) => {
+        let array = time.split(' ')
+        if (parseInt(array[0]) > 1) {
+            array[1] += 's'
+        }
+        return array.join(' ')
+    }).reduce((a, b, i, s) => {
+        if (i === s.length - 1) {
+            return a + ` and ${b}`
+        } else return a + `, ${b}`
+    })
+    return hFriendly
+}
+
+console.log(formatDuration(10002003988)) // 317 years, 58 days, 22 hours, 26 minutes and 28 seconds
